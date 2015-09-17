@@ -1,0 +1,22 @@
+services:
+    sonata.admin.faq:
+        class: AppBundle\Admin\FAQAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Контент", label: "FAQ" }
+        arguments:
+            - ~
+            - AppBundle\Entity\FAQ
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    sonata.admin.line:
+        class: AppBundle\Admin\LineAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Контент", label: "Направления" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Line
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]

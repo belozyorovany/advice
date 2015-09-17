@@ -1,0 +1,27 @@
+AppBundle\Entity\Line:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        image:
+            type: string
+            length: 255
+        preview:
+            type: string
+            length: '1000'
+        description:
+            type: text
+        updated:        # changed when files are uploaded, to force preUpdate and postUpdate to fire
+            type:         datetime
+            nullable:     true
+    lifecycleCallbacks:
+        prePersist:   [ lifecycleFileUpload ]
+        preUpdate:    [ lifecycleFileUpload ]
