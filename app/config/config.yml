@@ -36,6 +36,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form:
+        resources:
+            - 'SonataFormatterBundle:Form:formatter.html.twig'
 
 # Assetic Configuration
 assetic:
@@ -111,3 +114,38 @@ fos_user:
 
     service:
         user_manager: sonata.user.orm.user_manager                      # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
+
+sonata_admin:
+    title:                'Advice Admin'
+    templates:
+        layout:  SonataAdminBundle::layout.html.twig
+
+sonata_formatter:
+    formatters:
+        markdown:
+            service: sonata.formatter.text.markdown
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+
+        text:
+            service: sonata.formatter.text.text
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+
+        rawhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+
+        richhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+
+        twig:
+            service: sonata.formatter.text.twigengine
+            extensions: [] # Twig formatter cannot have extensions

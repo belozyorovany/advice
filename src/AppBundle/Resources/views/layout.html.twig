@@ -49,16 +49,16 @@
     <div class="makeborder-left"></div>
     <div class="makeborder-right"></div>
 
-    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <form id="searchform" role="form">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    <input type="text" class="form-control" placeholder="What you are looking for?">
-                </form>
-            </div>
-        </div>
-    </div>
+    {#<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">#}
+        {#<div class="modal-dialog modal-lg">#}
+            {#<div class="modal-content">#}
+                {#<form id="searchform" role="form">#}
+                    {#<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>#}
+                    {#<input type="text" class="form-control" placeholder="What you are looking for?">#}
+                {#</form>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
 
     <div id="wrapper">
         <div class="container">
@@ -71,15 +71,15 @@
                                     <span class="sr-only">Toggle navigation</span>
                                     <i class="fa fa-bars fa-2x"></i>
                                 </button>
-                                <a id="brand" class="navbar-brand" href="index.html"><img src="bundles/app/images/logo.png" alt="Law"></a>
+                                <a id="brand" class="navbar-brand" href="index.html"><img src="{{ asset('bundles/app/images/logo.png') }}" alt="Law"></a>
                             </div>
                             <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav navbar-right" id="nav">
                                     <li class="current"><a href="#Home" title="">Home</a></li>
-                                    <li><a href="#Practice_Area" title="">Practice Area</a></li>
-                                    <li><a href="#faq" title="">FAQ</a></li>
+                                    <li><a href="#Practice_Area" title="">Направления деятельности</a></li>
                                     <li><a href="#Case_Area" title="">Case Area</a></li>
-                                    <li><a href="#contact" title="">Contact</a></li>
+                                    <li><a href="#faq" title="">ЧАВО</a></li>
+                                    <li><a href="#contact" title="">Контакты</a></li>
                                 </ul>
                             </div><!-- end navbar-collapse collapse -->
                         </div><!-- nav -->
@@ -88,7 +88,7 @@
             </header><!-- end header -->
         </div><!-- end container -->
         <div id="page_header">
-            <div id="parallax" class="parallax bgback bg" style="background-image: url('bundles/app/images/5.jpg');" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20"></div>
+            <div id="parallax" class="parallax bgback bg" style="background-image: url({{ asset('bundles/app/images/5.jpg') }});" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20"></div>
 
 
             <div class="container text-center header-part">

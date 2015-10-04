@@ -1,0 +1,24 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block container %}
+    <div class="container">
+        <div class="container pm-containerPadding-top-80 pm-containerPadding-bottom-40">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 wow fadeInUp animated" data-wow-delay="0.3s" data-wow-offset="50" data-wow-duration="1s">
+                    <div class="block-one block">
+                        <img src="{{ line.getWebPath() }}" width="200" class="img-responsive pm-inline" alt="icon" />
+
+                        <h6 class="pm-column-title">{{ line.title }}</h6>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <div class="block-one">
+                        {{ line.description }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

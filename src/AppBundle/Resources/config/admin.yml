@@ -10,6 +10,17 @@ services:
         calls:
             - [ setTranslationDomain, [AppBundle]]
 
+    sonata.admin.faq_category:
+        class: AppBundle\Admin\FAQCategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Контент", label: "Категории FAQ" }
+        arguments:
+            - ~
+            - AppBundle\Entity\FAQCategory
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
     sonata.admin.line:
         class: AppBundle\Admin\LineAdmin
         tags:
@@ -17,6 +28,17 @@ services:
         arguments:
             - ~
             - AppBundle\Entity\Line
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]
+
+    sonata.admin.case_area:
+        class: AppBundle\Admin\CaseAreaAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Контент", label: "Case Area" }
+        arguments:
+            - ~
+            - AppBundle\Entity\CaseArea
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle]]

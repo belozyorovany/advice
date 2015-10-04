@@ -1,6 +1,6 @@
-AppBundle\Entity\FAQ:
+AppBundle\Entity\FAQCategory:
     type: entity
-    table: null
+    table: faq_category
     id:
         id:
             type: integer
@@ -8,17 +8,9 @@ AppBundle\Entity\FAQ:
             generator:
                 strategy: AUTO
     fields:
-        question:
+        name:
             type: string
             length: 255
-        answer:
-            type: text
         weight:
             type: integer
-    manyToOne:
-        category:
-            targetEntity: FAQCategory
-            joinColumn:
-                name: category_id
-                referencedColumnName: id
     lifecycleCallbacks: {  }

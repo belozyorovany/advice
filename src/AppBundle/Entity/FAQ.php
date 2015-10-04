@@ -108,4 +108,32 @@ class FAQ
     {
         return $this->weight;
     }
+    /**
+     * @var \AppBundle\Entity\FAQCategory
+     */
+    private $category;
+
+
+    /**
+     * Set category
+     *
+     * @param \AppBundle\Entity\FAQCategory $category
+     * @return FAQ
+     */
+    public function setCategory(\AppBundle\Entity\FAQCategory $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \AppBundle\Entity\FAQCategory 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

@@ -6,11 +6,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile as UploadedFile;
 
 /**
- * Line
+ * CaseArea
  */
-class Line
+class CaseArea
 {
-    const SERVER_PATH_TO_IMAGE_FOLDER = 'uploads/line/';
+    const SERVER_PATH_TO_IMAGE_FOLDER = 'uploads/casearea/';
 
     /**
      * @var integer
@@ -25,7 +25,7 @@ class Line
     /**
      * @var string
      */
-    private $image;
+    private $icon;
 
     /**
      * @var string
@@ -38,6 +38,11 @@ class Line
     private $description;
 
     /**
+     * @var string
+     */
+    private $button_title;
+
+    /**
      * @var \DateTime
      */
     private $updated;
@@ -46,6 +51,16 @@ class Line
      * @var integer
      */
     private $weight;
+
+    /**
+     * @var string
+     */
+    private $rawDescription;
+
+    /**
+     * @var string
+     */
+    private $descriptionFormatter;
 
 
     /**
@@ -62,7 +77,7 @@ class Line
      * Set title
      *
      * @param string $title
-     * @return Line
+     * @return CaseArea
      */
     public function setTitle($title)
     {
@@ -82,33 +97,33 @@ class Line
     }
 
     /**
-     * Set image
+     * Set icon
      *
-     * @param string $image
-     * @return Line
+     * @param string $icon
+     * @return CaseArea
      */
-    public function setImage(UploadedFile $image = null)
+    public function setIcon(UploadedFile $icon = null)
     {
-        $this->image = $image;
+        $this->icon = $icon;
 
         return $this;
     }
 
     /**
-     * Get image
+     * Get icon
      *
      * @return string 
      */
-    public function getImage()
+    public function getIcon()
     {
-        return $this->image;
+        return $this->icon;
     }
 
     /**
      * Set preview
      *
      * @param string $preview
-     * @return Line
+     * @return CaseArea
      */
     public function setPreview($preview)
     {
@@ -131,7 +146,7 @@ class Line
      * Set description
      *
      * @param string $description
-     * @return Line
+     * @return CaseArea
      */
     public function setDescription($description)
     {
@@ -151,10 +166,33 @@ class Line
     }
 
     /**
+     * Set button_title
+     *
+     * @param string $buttonTitle
+     * @return CaseArea
+     */
+    public function setButtonTitle($buttonTitle)
+    {
+        $this->button_title = $buttonTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get button_title
+     *
+     * @return string 
+     */
+    public function getButtonTitle()
+    {
+        return $this->button_title;
+    }
+
+    /**
      * Set updated
      *
      * @param \DateTime $updated
-     * @return Line
+     * @return CaseArea
      */
     public function setUpdated($updated)
     {
@@ -177,7 +215,7 @@ class Line
      * Set weight
      *
      * @param integer $weight
-     * @return Line
+     * @return CaseArea
      */
     public function setWeight($weight)
     {
@@ -194,6 +232,60 @@ class Line
     public function getWeight()
     {
         return $this->weight;
+    }
+
+    /**
+     * Set rawDescription
+     *
+     * @param string $rawDescription
+     * @return CaseArea
+     */
+    public function setRawDescription($rawDescription)
+    {
+        $this->rawDescription = $rawDescription;
+
+        return $this;
+    }
+
+    /**
+     * Get rawDescription
+     *
+     * @return string 
+     */
+    public function getRawDescription()
+    {
+        return $this->rawDescription;
+    }
+
+    /**
+     * Set descriptionFormatter
+     *
+     * @param string $descriptionFormatter
+     * @return CaseArea
+     */
+    public function setDescriptionFormatter($descriptionFormatter)
+    {
+        $this->descriptionFormatter = $descriptionFormatter;
+
+        return $this;
+    }
+
+    /**
+     * Get descriptionFormatter
+     *
+     * @return string 
+     */
+    public function getDescriptionFormatter()
+    {
+        return $this->descriptionFormatter;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function lifecycleFileUpload()
+    {
+        $this->upload();
     }
 
     /**
@@ -238,16 +330,9 @@ class Line
             $this->getFile()->getClientOriginalName()
         );
         // set the path property to the filename where you've saved the file
-        $this->image = $this->getFile()->getClientOriginalName();
+        $this->icon = $this->getFile()->getClientOriginalName();
         // clean up the file property as you won't need it anymore
         $this->setFile(null);
-    }
-
-    /**
-     * Lifecycle callback to upload the file to the server
-     */
-    public function lifecycleFileUpload() {
-        $this->upload();
     }
 
     /**
@@ -258,6 +343,7 @@ class Line
     }
 
     public function getWebPath() {
-        return Line::SERVER_PATH_TO_IMAGE_FOLDER . $this->getImage();
+        return Line::SERVER_PATH_TO_IMAGE_FOLDER . $this->getIcon();
     }
+
 }

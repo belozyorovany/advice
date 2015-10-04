@@ -54,7 +54,7 @@ class Version20150815205743 extends AbstractMigration
         $this->addSql('ALTER TABLE acl_entries DROP FOREIGN KEY FK_46C8B8063D9AB4A6');
         $this->addSql('DROP TABLE fos_user_user');
         $this->addSql('DROP TABLE fos_user_user_group');
-        $this->addSql('DROP TABLE fos_user_group');
+        $this->addSql('DROP TABLE fosVersion20150815205743_user_group');
         $this->addSql('DROP TABLE acl_classes');
         $this->addSql('DROP TABLE acl_security_identities');
         $this->addSql('DROP TABLE acl_object_identities');

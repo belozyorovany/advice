@@ -11,88 +11,28 @@
     <div id="Practice_Area">
         <div class="container">
             <div class="title text-center">
-                <h3 class="title-text">Practice Area</h3>
+                <h3 class="title-text">Направления деятельности</h3>
                 <em class="lead"> We are here to provide you legal help !</em>
                 <hr>
             </div>
 
             <div class="row">
-
                 <div class="portfolio-items">
-                    <div class="item-blog col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <ul>
-                            <li class="img_item">
-                                <div class="caption8 ctn_blue">
-                                    <h3>Blue</h3>
-                                    <p>Vestibulum ante ipsum primis in fauci bus orci luctus et ultrices posuere cubilia. Ut in magna eget quam biben dum rhoncus ipsum.</p>
-                                    <a href="#" class="pf_button green">Details</a>
-                                </div>
-                                <img class="img-responsive"  src="bundles/app/images/1.jpg" alt="" />
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-blog col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <ul>
-                            <li class="img_item">
-                                <div class="caption8 ctn_green">
-                                    <h3>Green</h3>
-                                    <p>Vestibulum ante ipsum primis in fauci bus orci luctus et ultrices posuere cubilia. Ut in magna eget quam biben dum rhoncus ipsum.</p>
-                                    <a href="#" class="pf_button">Details</a>
-                                </div>
-                                <img class="img-responsive"  src="bundles/app/images/2.jpg" alt="" />
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-blog col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <ul>
-                            <li class="img_item">
-                                <div class="caption8 ctn_brown">
-                                    <h3>Brown</h3>
-                                    <p>Vestibulum ante ipsum primis in fauci bus orci luctus et ultrices posuere cubilia. Ut in magna eget quam biben dum rhoncus ipsum.</p>
-                                    <a href="#" class="pf_button">Details</a>
-                                </div>
-                                <img class="img-responsive"  src="bundles/app/images/3.jpg" alt="" />
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-blog col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <ul>
-                            <li class="img_item">
-                                <div class="caption8 ctn_darkslategray">
-                                    <h3>Darkslategray</h3>
-                                    <p>Vestibulum ante ipsum primis in fauci bus orci luctus et ultrices posuere cubilia. Ut in magna eget quam biben dum rhoncus ipsum.</p>
-                                    <a href="#" class="pf_button">Details</a>
-                                </div>
-                                <img class="img-responsive"  src="bundles/app/images/4.jpg" alt="" />
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-blog col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <ul>
-                            <li class="img_item">
-                                <div class="caption8 ctn_indianred">
-                                    <h3>Indianred</h3>
-                                    <p>Vestibulum ante ipsum primis in fauci bus orci luctus et ultrices posuere cubilia. Ut in magna eget quam biben dum rhoncus ipsum.</p>
-                                    <a href="#" class="pf_button orange">Details</a>
-                                </div>
-                                <img class="img-responsive"  src="bundles/app/images/1.jpg" alt="" />
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="item-blog col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                        <ul>
-                            <li class="img_item">
-                                <div class="caption8 ctn_white">
-                                    <h3>White</h3>
-                                    <p>Vestibulum ante ipsum primis in fauci bus orci luctus et ultrices posuere cubilia. Ut in magna eget quam biben dum rhoncus ipsum.</p>
-                                    <a href="#" class="pf_button">Details</a>
-                                </div>
-                                <img class="img-responsive"  src="bundles/app/images/2.jpg" alt="" />
-                            </li>
-                        </ul>
-                    </div>
+                    {% for item in Lines %}
+                        <div class="item-blog col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <ul>
+                                <li class="img_item">
+                                    <div class="caption8 ctn_white">
+                                        <h3>{{ item.title }}</h3>
+                                        <p>{{ item.preview }}</p>
+                                        <a href="/line/{{ item.id }}" class="pf_button silver">Подробнее</a>
+                                    </div>
+                                    <img class="img-responsive"  src="{{ item.getWebPath() }}" alt="{{ item.title }}" />
+                                </li>
+                            </ul>
+                        </div>
+                    {% endfor %}
                 </div><!-- End of .portfolio-items -->
-
             </div><!-- end row -->
         </div><!-- end portfolio_wrapper -->
     </div>
@@ -100,14 +40,40 @@
     <br>
 
 
+    <div id="Case_Area">
+        <div class="wow animated fadeInLeft">
+            <div class="title text-center ">
+                <h3 class="title-text">Case Area</h3>
+                <hr>
+                <em class="lead" >Mostly, we have to lead with the cases, is shown through the bar. </em>
+            </div><br>
+        </div>
+        <div class="container pm-containerPadding-top-80 pm-containerPadding-bottom-40">
+            <div class="row">
+                {% for item in CaseAreas %}
+                    <div class="col-lg-4 col-md-4 col-sm-12 wow fadeInUp animated" data-wow-delay="0.3s" data-wow-offset="50" data-wow-duration="1s">
+                        <div class="block-one block">
+                            <img src="{{ item.getWebPath() }}" width="200" class="img-responsive pm-inline" alt="icon" />
+
+                            <h6 class="pm-column-title">{{ item.title }}</h6>
+                            <div class="caret-down"><i class="fa fa-caret-down"></i></div>
+                            <p>{{ item.preview }}</p>
+                            <div class="btn-blk"><a href="/case-area/{{ item.id }}" class="pm-rounded-btn">{{ item.buttonTitle }}</a></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
     <!-- FAQ -->
 
     <div id="faq">
         <div class="container">
             <div class="title text-center">
-                <h3 class="title-text faq-text">Frequently Asked Questions</h3>
+                <h3 class="title-text faq-text">Часто задаваемые вопросы</h3>
                 <hr>
-                <em class="lead" >Here is the answer's , what people frequently ask us</em>
+                <em class="lead" >Здесь собраны вопросы, которые люди часто задают нам</em>
             </div>
 
 
@@ -127,59 +93,6 @@
                         </div>
                     </div>
                 {% endfor %}
-
-{#
-                <div class="panel panel-default">
-                    <div class="panel-heading clickable">
-                        <h3 class="panel-title">
-                            What paperwork do I need to complete to file for divorce?</h3>
-                        <span class="pull-right "><i class="glyphicon glyphicon-chevron-up"></i></span>
-                    </div>
-                    <div class="panel-body">
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading clickable">
-                        <h3 class="panel-title">
-                            What paperwork do I need to complete to file for divorce?</h3>
-                        <span class="pull-right "><i class="glyphicon glyphicon-chevron-up"></i></span>
-                    </div>
-                    <div class="panel-body">
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading clickable">
-                        <h3 class="panel-title">
-                            What paperwork do I need to complete to file for divorce?</h3>
-                        <span class="pull-right "><i class="glyphicon glyphicon-chevron-up"></i></span>
-                    </div>
-                    <div class="panel-body">
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading clickable">
-                        <h3 class="panel-title">
-                            How do I change my custody and support orders?</h3>
-                        <span class="pull-right "><i class="glyphicon glyphicon-chevron-up"></i></span>
-                    </div>
-                    <div class="panel-body">
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-                    </div>
-                </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading clickable">
-                        <h3 class="panel-title">
-                            How to make a General Diary?</h3>
-                        <span class="pull-right "><i class="glyphicon glyphicon-chevron-up"></i></span>
-                    </div>
-                    <div class="panel-body">
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-                    </div>
-                </div>
-#}
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12 wow animated zoomIn">
                 <h3 class="title-panel text-center">Business Law FAQs</h3><hr>
@@ -247,70 +160,4 @@
         </div>
     </div>
     <!--End Faq -->
-    <div id="Case_Area">
-        <div class="wow animated fadeInLeft">
-            <div class="title text-center ">
-                <h3 class="title-text">Case Area</h3>
-                <hr>
-                <em class="lead" >Mostly, we have to lead with the cases, is shown through the bar. </em>
-            </div><br>
-        </div>
-        <div class="container pm-containerPadding-top-80 pm-containerPadding-bottom-40">
-            <div class="row">
-
-                <!-- Column 1 -->
-
-                <div class="col-lg-4 col-md-4 col-sm-12 wow fadeInUp animated" data-wow-delay="0.3s" data-wow-offset="50" data-wow-duration="1s">
-                    <div class="block-one block">
-                        <img src="bundles/app/images/icon1.png" width="200" class="img-responsive pm-inline" alt="icon" />
-
-                        <h6 class="pm-column-title">personal case</h6>
-                        <div class="caret-down"><i class="fa fa-caret-down"></i></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla sem ut nisl auctor, sit amet auctor tortor mollis. Aliquam nibh elit, tincidunt sit amet orci ac, pellentesque pretium mi.</p>
-                        <div class="btn-blk"><a href="#" class="pm-rounded-btn">meet our trainers</a></div>
-
-                    </div>
-                </div>
-                <!-- Column 1 end -->
-
-                <!-- Column 2 -->
-
-                <div class="col-lg-4 col-md-4 col-sm-12wow fadeInUp animated
-                        " data-wow-delay="0.6s" data-wow-offset="50" data-wow-duration="1s">
-                    <div class="block-one block">
-                        <img src="bundles/app/images/icon2.png" width="200" class="img-responsive pm-inline" alt="icon" />
-
-                        <h6 class="pm-column-title">Business Case</h6>
-                        <div class="caret-down"><i class="fa fa-caret-down"></i></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla sem ut nisl auctor, sit amet auctor tortor mollis. Aliquam nibh elit, tincidunt sit amet orci ac, pellentesque pretium mi.</p>
-
-                        <div class="btn-blk"><a href="#" class="pm-rounded-btn">view programs</a>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- Column 2 end -->
-
-                <!-- Column 3 -->
-
-                <div class="col-lg-4 col-md-4 col-sm-12 wow fadeInUp animated
-                     " data-wow-delay="0.9s" data-wow-offset="50" data-wow-duration="1s">
-                    <div class="block-one">
-                        <img src="bundles/app/images/icon3.png" width="200" class="img-responsive pm-inline" alt="icon" />
-
-                        <h6 class="pm-column-title">special case</h6>
-                        <div class="caret-down"><i class="fa fa-caret-down"></i></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum fringilla sem ut nisl auctor, sit amet auctor tortor mollis. Aliquam nibh elit, tincidunt sit amet orci ac, pellentesque pretium mi.</p>
-
-                        <div class="btn-blk">
-                            <a href="#" class="pm-rounded-btn">view classes</a>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- Column 3 end -->
-
-            </div>
-        </div>
-    </div>
 {% endblock %}
