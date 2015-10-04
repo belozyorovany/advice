@@ -32,6 +32,9 @@ AppBundle\Entity\CaseArea:
         descriptionFormatter:
             type: string
             length: 255
+        active:
+            type: boolean
+            nullable: false
     lifecycleCallbacks:
         prePersist:   [ lifecycleFileUpload ]
         preUpdate:    [ lifecycleFileUpload ]

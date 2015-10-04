@@ -13,4 +13,7 @@ AppBundle\Entity\FAQCategory:
             length: 255
         weight:
             type: integer
+        active:
+            type: boolean
+            nullable: false
     lifecycleCallbacks: {  }

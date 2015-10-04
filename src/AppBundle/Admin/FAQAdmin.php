@@ -14,25 +14,29 @@ class FAQAdmin extends Admin {
             ->add('category', 'entity', array(
                 'class' => 'AppBundle:FAQCategory',
                 'choice_label' => 'name',
+                'label' => 'Категория'
             ))
             ->add('question', 'text', array('label' => 'Вопрос'))
             ->add('answer', 'textarea', array('attr' => array('cols' => '30', 'rows' => '10'), 'label' => 'Ответ'))
-            ->add('weight', 'integer', array('label' => 'Вес'));
+            ->add('weight', 'integer', array('label' => 'Вес'))
+            ->add('active', 'checkbox', array('label' => 'Активность'));
     }
 
     // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
         $datagridMapper
-            ->add('question')
-            ->add('answer');
+            ->add('question', null, array('label' => 'Вопрос'))
+            ->add('answer', null, array('label' => 'Ответ'))
+            ->add('active', null, array('label' => 'Активность'));
     }
 
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-            ->add('category')
-            ->addIdentifier('question')
-            ->add('answer')
-            ->add('weight');
+            ->add('category', null, array('label' => 'Категория'))
+            ->addIdentifier('question', null, array('label' => 'Вопрос'))
+            ->add('answer', null, array('label' => 'Ответ'))
+            ->add('active', null, array('label' => 'Активность'))
+            ->add('weight', null, array('label' => 'Вес'));
     }
 }

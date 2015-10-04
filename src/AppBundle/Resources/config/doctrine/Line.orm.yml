@@ -24,6 +24,9 @@ AppBundle\Entity\Line:
             nullable:     true
         weight:
             type: integer
+        active:
+            type: boolean
+            nullable: false
     lifecycleCallbacks:
         prePersist:   [ lifecycleFileUpload ]
         preUpdate:    [ lifecycleFileUpload ]

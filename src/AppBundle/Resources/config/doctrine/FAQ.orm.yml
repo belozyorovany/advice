@@ -15,6 +15,9 @@ AppBundle\Entity\FAQ:
             type: text
         weight:
             type: integer
+        active:
+            type: boolean
+            nullable: false
     manyToOne:
         category:
             targetEntity: FAQCategory

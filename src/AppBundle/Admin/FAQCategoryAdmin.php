@@ -18,19 +18,22 @@ class FAQCategoryAdmin extends Admin {
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
             ->add('name', 'text', array('label' => 'Наименование'))
-            ->add('weight', 'integer', array('label' => 'Вес'));
+            ->add('weight', 'integer', array('label' => 'Вес'))
+            ->add('active', 'checkbox', array('label' => 'Активность'));
     }
 
     // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
         $datagridMapper
-            ->add('name');
+            ->add('name', null, array('label' => 'Наименование'))
+            ->add('active', null, array('label' => 'Активность'));
     }
 
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-            ->addIdentifier('name')
-            ->add('weight');
+            ->addIdentifier('name', null, array('label' => 'Наименование'))
+            ->add('active', null, array('label' => 'Активность'))
+            ->add('weight', null, array('label' => 'Вес'));
     }
 }

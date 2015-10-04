@@ -31,20 +31,24 @@ class LineAdmin extends Admin {
             ->add('file', 'file', $fileFieldOptions)
             ->add('preview', 'textarea', array('attr' => array('cols' => '30', 'rows' => '5'), 'label' => 'Превью текста'))
             ->add('description', 'textarea', array('attr' => array('cols' => '30', 'rows' => '10'), 'label' => 'Текст'))
-            ->add('weight', 'integer', array('label' => 'Вес'));
+            ->add('weight', 'integer', array('label' => 'Вес'))
+            ->add('active', 'checkbox', array('label' => 'Активность'));
     }
 
     // Fields to be shown on filter forms
     protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
         $datagridMapper
-            ->add('title');
+            ->add('title', null, array('label' => 'Название'))
+            ->add('active', null, array('label' => 'Активность'));
     }
 
     // Fields to be shown on lists
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-            ->addIdentifier('title')
-            ->add('preview');
+            ->addIdentifier('title', null, array('label' => 'Название'))
+            ->add('preview', null, array('label' => 'Превью текста'))
+            ->add('active', null, array('label' => 'Активность'))
+            ->add('weight', null, array('label' => 'Вес'));
     }
 
     public function prePersist($line) {

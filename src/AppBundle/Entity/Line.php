@@ -260,4 +260,32 @@ class Line
     public function getWebPath() {
         return Line::SERVER_PATH_TO_IMAGE_FOLDER . $this->getImage();
     }
+    /**
+     * @var boolean
+     */
+    private $active;
+
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return Line
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
 }

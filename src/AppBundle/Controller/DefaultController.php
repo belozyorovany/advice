@@ -12,18 +12,42 @@ class DefaultController extends Controller {
      */
     public function indexAction(Request $request) {
         $repository = $this->getDoctrine()
-            ->getRepository('AppBundle:FAQ');
+            ->getRepository('AppBundle:FAQCategory');
 
-        $query = $repository->createQueryBuilder('f')
-            ->orderBy('f.weight', 'ASC')
+        $query = $repository->createQueryBuilder('fc')
+            ->where('fc.active = \'1\'')
+            ->orderBy('fc.weight', 'ASC')
+            ->setMaxResults(2)
             ->getQuery();
 
-        $aFAQ = $query->getResult();
+        $aCategory = $query->getResult();
+
+        $aFAQCategory = [];
+        foreach ($aCategory as $oCategory) {
+            $repository = $this->getDoctrine()
+                ->getRepository('AppBundle:FAQ');
+
+            $query = $repository->createQueryBuilder('f')
+                ->where('f.category = :category_id')
+                ->setParameter('category_id', $oCategory->getId())
+                ->andWhere('f.active = \'1\'')
+                ->orderBy('f.weight', 'ASC')
+                ->getQuery();
+
+            $aFAQ = $query->getResult();
+
+            $aFAQCategory[$oCategory->getWeight()] = [
+                'name' => $oCategory->getName(),
+                'FAQ' => $aFAQ
+            ];
+
+        }
 
         $repository = $this->getDoctrine()
             ->getRepository('AppBundle:Line');
 
         $query = $repository->createQueryBuilder('l')
+            ->where('l.active = \'1\'')
             ->orderBy('l.weight', 'ASC')
             ->getQuery();
 
@@ -33,14 +57,16 @@ class DefaultController extends Controller {
             ->getRepository('AppBundle:CaseArea');
 
         $query = $repository->createQueryBuilder('ca')
+            ->where('ca.active = \'1\'')
             ->orderBy('ca.weight', 'ASC')
+            ->setMaxResults(3)
             ->getQuery();
 
         $aCaseArea = $query->getResult();
 
         return $this->render('AppBundle:default:index.html.twig',
             array(
-                'FAQ' => $aFAQ,
+                'FAQCategories' => $aFAQCategory,
                 'Lines' => $aLine,
                 'CaseAreas' => $aCaseArea
             )

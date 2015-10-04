@@ -85,4 +85,32 @@ class FAQCategory
     {
         return $this->name;
     }
+    /**
+     * @var boolean
+     */
+    private $active;
+
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return FAQCategory
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
 }

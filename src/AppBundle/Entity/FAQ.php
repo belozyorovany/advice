@@ -136,4 +136,32 @@ class FAQ
     {
         return $this->category;
     }
+    /**
+     * @var boolean
+     */
+    private $active;
+
+
+    /**
+     * Set active
+     *
+     * @param boolean $active
+     * @return FAQ
+     */
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * Get active
+     *
+     * @return boolean 
+     */
+    public function getActive()
+    {
+        return $this->active;
+    }
 }
