@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile as UploadedFile;
  */
 class Line
 {
-    const SERVER_PATH_TO_IMAGE_FOLDER = 'uploads/line/';
+    const SERVER_PATH_TO_IMAGE_FOLDER = '/uploads/line/';
 
     /**
      * @var integer

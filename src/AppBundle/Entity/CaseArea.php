@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile as UploadedFile;
  */
 class CaseArea
 {
-    const SERVER_PATH_TO_IMAGE_FOLDER = 'uploads/casearea/';
+    const SERVER_PATH_TO_IMAGE_FOLDER = '/uploads/casearea/';
 
     /**
      * @var integer

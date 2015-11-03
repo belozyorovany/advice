@@ -71,15 +71,16 @@
                                     <span class="sr-only">Toggle navigation</span>
                                     <i class="fa fa-bars fa-2x"></i>
                                 </button>
-                                <a id="brand" class="navbar-brand" href="index.html"><img src="{{ asset('bundles/app/images/logo.png') }}" alt="Law"></a>
+                                {#<a id="brand" class="navbar-brand" href="index.html"><img src="{{ asset('bundles/app/images/logo.png') }}" alt="Law"></a>#}
+                                <a id="brand" class="navbar-brand" href="/"><img src="{{ logo }}" alt="Law"></a>
                             </div>
                             <div class="navbar-collapse collapse">
                                 <ul class="nav navbar-nav navbar-right" id="nav">
-                                    <li class="current"><a href="#Home" title="">Home</a></li>
-                                    <li><a href="#Practice_Area" title="">Направления деятельности</a></li>
-                                    <li><a href="#Case_Area" title="">Case Area</a></li>
-                                    <li><a href="#faq" title="">ЧАВО</a></li>
-                                    <li><a href="#contact" title="">Контакты</a></li>
+                                    <li class="current"><a href="#Home" title="">Домой</a></li>
+                                    <li><a href="#Practice_Area" title="">{{ linesHeader }}</a></li>
+                                    <li><a href="#Case_Area" title="">{{ caseAreaHeader }}</a></li>
+                                    <li><a href="#faq" title="">{{ FAQHeader }}</a></li>
+                                    <li><a href="#contact" title="">{{ contactsHeader }}</a></li>
                                 </ul>
                             </div><!-- end navbar-collapse collapse -->
                         </div><!-- nav -->
@@ -88,11 +89,12 @@
             </header><!-- end header -->
         </div><!-- end container -->
         <div id="page_header">
-            <div id="parallax" class="parallax bgback bg" style="background-image: url({{ asset('bundles/app/images/5.jpg') }});" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20"></div>
+            {#<div id="parallax" class="parallax bgback bg" style="background-image: url({{ asset('bundles/app/images/5.jpg') }});" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20"></div>#}
+            <div id="parallax" class="parallax bgback bg" style="background-image: url('{{ headerBanner }}')" data-stellar-background-ratio="0.6" data-stellar-vertical-offset="20"></div>
 
 
             <div class="container text-center header-part">
-                <h2 class="header-text">A <span class="rotate">Good, Great </span> Lawyer Knows the <span class="rotate"> Law, Judge </span></h2>
+                <h2 class="header-text">{{ tagline | raw }}</h2>
 
                 <div class="angle-down">
                     <a href="#Practice_Area">
@@ -108,74 +110,36 @@
 
             <div id="contact">
                 <div class="title text-center">
-                    <h3 class="title-text">Contact us</h3>
+                    <h3 class="title-text">{{ contactsHeader }}</h3>
 
-                    <em class="lead">For better service , you're bound to contact us.</em>
+                    <em class="lead">{{ contactsDescription }}</em>
                     <hr>
                 </div>
             </div>
             <div class="wow animated zoomIn" data-wow-delay="1s" style="margin-bottom: -8px;">
-                <iframe class="maps " src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.664063521107!2d91.83379900000003!3d24.909437999999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37505558dd0be6a1%3A0x65c7e47c94b6dc45!2sTechnext!5e0!3m2!1sen!2sbd!4v1422512775544"  height="350" style="border:0"></iframe>
+                {{ map | raw }}
             </div>
 
             <footer class="footer">
                 <div class="container">
-                    <div class="widget col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="widget col-lg-9 col-md-9 col-sm-6 col-xs-12">
                         <div class="title">
-                            <h3>About <span>Attorney</span></h3>
-                        </div>
-                        <br>
-                        <p>Attorney-Template  is a clean, minimal, stylish Bootstrap theme for showcasing your Law firm. </p>
-                        <p>On the other hand, we denounce with rious indignation and dislike men who are so be guiled and demoralized by the charms that they cannot foresee the pain</p>
-                    </div><!-- end widget -->
-
-                    <div class="widget col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                        <div class="title">
-                            <h3>Contact Us.</h3>
-                        </div>
-                        <div class="contact_widget row">
-                            <div id="message"></div>
-                            <form id="contactform" action="contact.php" name="contactform" method="post">
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <input type="text" name="name" id="name" required="required" class="form-control" placeholder="Name">
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <input type="text" name="email" id="email" required="required" class="form-control" placeholder="Email Address">
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                    <input type="text" name="subject" id="subject" required="required" class="form-control" placeholder="Subject">
-                                </div>
-
-                                <div class="clearfix"></div>
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <textarea class="form-control" name="comments" required="required" id="comments" rows="6" placeholder="Message"></textarea>
-                                </div>
-
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <button type="submit" value="SEND" id="submit" class="btn btn-lg btn-primary">SEND</button>
-                                </div>
-                            </form>
-                        </div> <!-- end contact_widget -->
-                    </div><!-- end widget -->
-
-                    <div class="widget col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                        <div class="title">
-                            <h3>Keep in Touch.</h3>
+                            <h3>Свяжитесь с нами</h3>
                         </div>
                         <ul class="contact_details">
-                            <li><i class="fa fa-map-marker"></i> <span>15 Springfield Way Hythe</span></li>
-                            <li><i class="fa fa-mobile-phone"></i> <span>(+ 00) 1-714-252-0026</span></li>
-                            <li><i class="fa fa-envelope"></i> <span>support@law.com</span></li>
+                            <li><i class="fa fa-map-marker"></i> <span>{{ address }}</span></li>
+                            <li><i class="fa fa-mobile-phone"></i> <span>{{ phone }}</span></li>
+                            <li><i class="fa fa-envelope"></i> <span>{{ email }}</span></li>
                         </ul>
+                    </div><!-- end widget -->
+
+                    <div class="widget col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="title">
+                            <h3>Мы в соцсетях</h3>
+                        </div>
                         <div class="social pull-left">
-                            <span><a title="Twitter" href="#"><i class="fa fa-twitter"></i></a></span>
-                            <span><a title="Facebook" href="#"><i class="fa fa-facebook"></i></a></span>
-                            <span><a title="Google Plus" href="#"><i class="fa fa-google-plus"></i></a></span>
-                            <span><a title="Skype" href="#"><i class="fa fa-skype"></i></a></span>
-                            <span><a title="Linkedin" href="#"><i class="fa fa-linkedin"></i></a></span>
-                            <span><a title="Youtube" href="#"><i class="fa fa-youtube"></i></a></span>
-                            <span><a title="Pinterest" href="#"><i class="fa fa-pinterest"></i></a></span>
+                            <span><a title="Twitter" href="{{ vk }}"><i class="fa fa-twitter"></i></a></span>
+                            <span><a title="Facebook" href="{{ fb }}"><i class="fa fa-facebook"></i></a></span>
                         </div><!-- end social -->
                     </div><!-- end widget -->
                 </div><!-- end container -->
@@ -186,7 +150,7 @@
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="title left">
-                                <h5 class="title-footer">Copyrights © 2014. All Rights Reserved by <a href="#">Your Website Link</a></h5>
+                                <h5 class="title-footer"> © {{ "now"|date("Y") }}. Все права защищены.</h5>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -224,14 +188,14 @@
         });
     </script>
     <script>
-        $(document).ready(function() {
-            $('#nav').onePageNav();
-
-            $('.do').click(function(e) {
-                $('#section-4').append('<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>');
-                e.preventDefault();
-            });
-        });
+//        $(document).ready(function() {
+//            $('#nav').onePageNav();
+//
+//            $('.do').click(function(e) {
+//                $('#section-4').append('<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>');
+//                e.preventDefault();
+//            });
+//        });
     </script>
     <script type="text/javascript">$(document).on('click', '.panel-heading span.clickable', function (e) {
             var $this = $(this);

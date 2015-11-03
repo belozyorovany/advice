@@ -1,5 +1,22 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
+{% set logo = Frame.webPathLogo %}
+{% set headerBanner = Frame.webPathHeaderBanner %}
+{% set tagline = Frame.tagline %}
+{% set linesHeader = Frame.linesHeader %}
+{% set caseAreaHeader = Frame.caseAreaHeader %}
+{% set FAQHeader = Frame.FAQHeader %}
+{% set contactsHeader = Frame.contactsHeader %}
+{% set contactsDescription = Frame.contactsDescription %}
+{% set map = Frame.map %}
+{% set address = Frame.address %}
+{% set phone = Frame.phone %}
+{% set email = Frame.email %}
+{% set vk = Frame.vk %}
+{% set fb = Frame.fb %}
+
+{% block title %} {{ line.title }} {% endblock %}
+
 {% block container %}
     <div class="container">
         <div class="container pm-containerPadding-top-80 pm-containerPadding-bottom-40">

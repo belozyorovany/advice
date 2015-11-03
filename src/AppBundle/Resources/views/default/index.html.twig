@@ -1,11 +1,28 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
+{% set logo = Frame.webPathLogo %}
+{% set headerBanner = Frame.webPathHeaderBanner %}
+{% set tagline = Frame.tagline %}
+{% set linesHeader = Frame.linesHeader %}
+{% set caseAreaHeader = Frame.caseAreaHeader %}
+{% set FAQHeader = Frame.FAQHeader %}
+{% set contactsHeader = Frame.contactsHeader %}
+{% set contactsDescription = Frame.contactsDescription %}
+{% set map = Frame.map %}
+{% set address = Frame.address %}
+{% set phone = Frame.phone %}
+{% set email = Frame.email %}
+{% set vk = Frame.vk %}
+{% set fb = Frame.fb %}
+
+{% block title %} Attorney or other name {% endblock %}
+
 {% block container %}
     <div class="container">
 
         <div class="tagline makepadding clearfix">
-            <h1><span>Hello!</span> We Design Stunning Products.</h1>
-            <p class="lead">We are a <span>Law</span> team working together to craft awesome websites, realise brand identities, design for<br> print and capture visual imagery through quality.</p>
+            {#<p class="lead">We are a <span>Law</span> team working together to craft awesome websites, realise brand identities, design for<br> print and capture visual imagery through quality.</p>#}
+            <p class="lead">{{ Frame.hello }}</p>
         </div><!-- end tagline -->
     </div>
 
@@ -13,8 +30,8 @@
         <div id="Practice_Area">
             <div class="container">
                 <div class="title text-center">
-                    <h3 class="title-text">Направления деятельности</h3>
-                    <em class="lead"> We are here to provide you legal help !</em>
+                    <h3 class="title-text">{{ Frame.linesHeader }}</h3>
+                    <em class="lead">{{ Frame.linesDescription }}</em>
                     <hr>
                 </div>
 
@@ -27,7 +44,7 @@
                                         <div class="caption8 ctn_white">
                                             <h3>{{ item.title }}</h3>
                                             <p>{{ item.preview }}</p>
-                                            <a href="/line/{{ item.id }}" class="pf_button silver">Подробнее</a>
+                                            <a href="line/{{ item.id }}" class="pf_button silver">Подробнее</a>
                                         </div>
                                         <img class="img-responsive"  src="{{ item.getWebPath() }}" alt="{{ item.title }}" />
                                     </li>
@@ -47,9 +64,9 @@
         <div id="Case_Area">
             <div class="wow animated fadeInLeft">
                 <div class="title text-center ">
-                    <h3 class="title-text">Case Area</h3>
+                    <h3 class="title-text">{{ Frame.caseAreaHeader }}</h3>
                     <hr>
-                    <em class="lead" >Mostly, we have to lead with the cases, is shown through the bar. </em>
+                    <em class="lead" >{{ Frame.caseAreaDescription }}</em>
                 </div><br>
             </div>
             <div class="container pm-containerPadding-top-80 pm-containerPadding-bottom-40">
@@ -62,7 +79,7 @@
                                 <h6 class="pm-column-title">{{ item.title }}</h6>
                                 <div class="caret-down"><i class="fa fa-caret-down"></i></div>
                                 <p>{{ item.preview }}</p>
-                                <div class="btn-blk"><a href="/case-area/{{ item.id }}" class="pm-rounded-btn">{{ item.buttonTitle }}</a></div>
+                                <div class="btn-blk"><a href="case-area/{{ item.id }}" class="pm-rounded-btn">{{ item.buttonTitle }}</a></div>
                             </div>
                         </div>
                     {% endfor %}
@@ -70,7 +87,7 @@
             </div>
         </div>
 
-        <br><br>
+        <br><br><br>
     {% endif %}
 
     <!-- FAQ -->
@@ -78,9 +95,9 @@
         <div id="faq">
             <div class="container">
                 <div class="title text-center">
-                    <h3 class="title-text faq-text">Часто задаваемые вопросы</h3>
+                    <h3 class="title-text faq-text">{{ Frame.FAQHeader }}</h3>
                     <hr>
-                    <em class="lead" >Здесь собраны вопросы, которые люди часто задают нам</em>
+                    <em class="lead" >{{ Frame.FAQDescription }}</em>
                 </div>
 
 

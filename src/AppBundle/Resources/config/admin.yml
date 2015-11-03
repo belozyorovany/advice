@@ -42,3 +42,14 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AppBundle]]
+
+    sonata.admin.frame:
+        class: AppBundle\Admin\FrameAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Контент", label: "Каркас" }
+        arguments:
+            - ~
+            - AppBundle\Entity\Frame
+            - ~
+        calls:
+            - [ setTranslationDomain, [AppBundle]]

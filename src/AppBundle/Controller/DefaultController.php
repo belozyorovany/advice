@@ -12,6 +12,16 @@ class DefaultController extends Controller {
      */
     public function indexAction(Request $request) {
         $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Frame');
+
+        $query = $repository->createQueryBuilder('f')
+            ->where('f.active = \'1\'')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        $aFrame = $query->getResult();
+
+        $repository = $this->getDoctrine()
             ->getRepository('AppBundle:FAQCategory');
 
         $query = $repository->createQueryBuilder('fc')
@@ -66,6 +76,7 @@ class DefaultController extends Controller {
 
         return $this->render('AppBundle:default:index.html.twig',
             array(
+                'Frame' => $aFrame[0],
                 'FAQCategories' => $aFAQCategory,
                 'Lines' => $aLine,
                 'CaseAreas' => $aCaseArea
@@ -79,12 +90,23 @@ class DefaultController extends Controller {
      * @param $id integer
      */
     public function caseAreaAction($id) {
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Frame');
+
+        $query = $repository->createQueryBuilder('f')
+            ->where('f.active = \'1\'')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        $aFrame = $query->getResult();
+
         $caseArea = $this->getDoctrine()
             ->getRepository('AppBundle:CaseArea')
             ->find($id);
 
         return $this->render('AppBundle:default:caseArea.html.twig',
             array(
+                'Frame' => $aFrame[0],
                 'caseArea' => $caseArea
             )
         );
@@ -96,12 +118,23 @@ class DefaultController extends Controller {
      * @param $id integer
      */
     public function lineAction($id) {
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Frame');
+
+        $query = $repository->createQueryBuilder('f')
+            ->where('f.active = \'1\'')
+            ->setMaxResults(1)
+            ->getQuery();
+
+        $aFrame = $query->getResult();
+
         $line = $this->getDoctrine()
             ->getRepository('AppBundle:Line')
             ->find($id);
 
         return $this->render('AppBundle:default:line.html.twig',
             array(
+                'Frame' => $aFrame[0],
                 'line' => $line
             )
         );

@@ -1,0 +1,74 @@
+AppBundle\Entity\Frame:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        logo:                     # лого в левом верхнем углу
+            type: string
+            length: 255
+        header_banner:            # банер в хедере
+            type: string
+            length: 255
+        tagline:                  # слоган на банере
+            type: string
+            length: 255
+        hello:                    # приветственный текст под банером
+            type: string
+            length: 500
+        lines_header:             # заголовок для направлений деятельности
+            type: string
+            length: 255
+        lines_description:        # описание для направлений деятельности
+            type: string
+            length: 500
+        case_area_header:         # заголовок для областей
+            type: string
+            length: 255
+        case_area_description:    # описание для областей
+            type: string
+            length: 500
+        faq_header:               # заголовок для faq
+            type: string
+            length: 255
+        faq_description:          # описание для faq
+            type: string
+            length: 500
+        contacts_header:          # заголовок для контактов
+            type: string
+            length: 255
+        contacts_description:     # описание для контактов
+            type: string
+            length: 255
+        address:                  # адрес
+            type: string
+            length: 255
+        map:                      # код карты
+            type: string
+            length: 1000
+        phone:                    # телефон
+            type: string
+            length: 255
+        email:                    # email
+            type: string
+            length: 255
+        vk:                       # группа vk
+            type: string
+            length: 255
+        fb:                       # группа facebook
+            type: string
+            length: 255
+        active:
+            type: boolean
+            nullable: false
+        updated:        # changed when files are uploaded, to force preUpdate and postUpdate to fire
+            type:         datetime
+            nullable:     true
+
+    lifecycleCallbacks:
+        prePersist:   [ lifecycleFileUpload ]
+        preUpdate:    [ lifecycleFileUpload ]
