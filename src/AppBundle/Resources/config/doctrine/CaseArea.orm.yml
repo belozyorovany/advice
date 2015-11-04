@@ -27,11 +27,6 @@ AppBundle\Entity\CaseArea:
             nullable:     true
         weight:
             type: integer
-        rawDescription:
-            type: text
-        descriptionFormatter:
-            type: string
-            length: 255
         active:
             type: boolean
             nullable: false

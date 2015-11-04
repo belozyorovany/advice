@@ -53,17 +53,6 @@ class CaseArea
     private $weight;
 
     /**
-     * @var string
-     */
-    private $rawDescription;
-
-    /**
-     * @var string
-     */
-    private $descriptionFormatter;
-
-
-    /**
      * Get id
      *
      * @return integer 
@@ -232,52 +221,6 @@ class CaseArea
     public function getWeight()
     {
         return $this->weight;
-    }
-
-    /**
-     * Set rawDescription
-     *
-     * @param string $rawDescription
-     * @return CaseArea
-     */
-    public function setRawDescription($rawDescription)
-    {
-        $this->rawDescription = $rawDescription;
-
-        return $this;
-    }
-
-    /**
-     * Get rawDescription
-     *
-     * @return string 
-     */
-    public function getRawDescription()
-    {
-        return $this->rawDescription;
-    }
-
-    /**
-     * Set descriptionFormatter
-     *
-     * @param string $descriptionFormatter
-     * @return CaseArea
-     */
-    public function setDescriptionFormatter($descriptionFormatter)
-    {
-        $this->descriptionFormatter = $descriptionFormatter;
-
-        return $this;
-    }
-
-    /**
-     * Get descriptionFormatter
-     *
-     * @return string 
-     */
-    public function getDescriptionFormatter()
-    {
-        return $this->descriptionFormatter;
     }
 
     /**
