@@ -10,8 +10,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile as UploadedFile;
  */
 class Frame
 {
-    const SERVER_PATH_TO_LOGO_FOLDER = '/uploads/logo/';
-    const SERVER_PATH_TO_BANNER_FOLDER = '/uploads/banner/';
+    const SERVER_PATH_TO_LOGO_FOLDER = 'uploads/logo/';
+    const SERVER_PATH_TO_BANNER_FOLDER = 'uploads/banner/';
 
     /**
      * @var integer
